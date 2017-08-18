@@ -22,8 +22,9 @@
   <strong>Ubicacion:</strong>
   <%= @tienda_artesanium.ubicacion %>
 </p>
-
+    <% if user_signed_in? %>
 <%= link_to 'Editar', edit_tienda_artesanium_path(@tienda_artesanium), :class=>'btn btn-info btn-block' %>
+    <% end %>
 <%= link_to 'Regresar', tienda_artesania_path, :class=>'btn btn-info btn-block' %>
   </div>
 </div>

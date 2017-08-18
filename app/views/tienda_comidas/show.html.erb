@@ -22,8 +22,9 @@
   <strong>Ubicacion:</strong>
   <%= @tienda_comida.ubicacion %>
 </p>
-
+    <% if user_signed_in? %>
 <%= link_to 'Editar', edit_tienda_comida_path(@tienda_comida), :class=>'btn btn-info btn-block' %>
+    <% end %>
 <%= link_to 'Regresar', tienda_comidas_path, :class=>'btn btn-info btn-block' %>
   </div>
 </div>
