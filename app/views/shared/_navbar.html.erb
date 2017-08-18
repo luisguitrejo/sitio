@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="<%= root_path %>"> <%= image_tag 'logo.png', :size => "150x55", alt: 'Logo' %></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="<%= galeriacomida_path %>">Comida <span class="glyphicon glyphicon-apple" style="color:red"></span></a></li>
+      <li><a href="<%= galeriaartesanias_path %>">Artesanías <span class="glyphicon glyphicon-lamp" style="color:orangered"></span></a></li>
+      <li><a href="<%= tienda_comidas_path %>">Tiendas de comida <span class="glyphicon glyphicon-cutlery" style="color:yellow"></span></a></li>
+      <li><a href="<%= tienda_artesania_path %>">Tiendas de artesanías <span class="glyphicon glyphicon-gift" style="color:aqua"></span></a></li>
+      <li><a href="<%= contacto_path %>">Contacto <span class="glyphicon glyphicon-phone-alt" style="color:white"></span></a></li>
+      <li><a href="<%= realidad_path %>">Tutorial <span class="glyphicon glyphicon-qrcode" style="color:red"></span></a></li>
+      <% if user_signed_in? %>
+          <li><a href="<%= orders_path %>">Ordenes <span class="glyphicon glyphicon-list-alt" style="color:#0ce3ac"></span></a></li>
+      <% end %>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user.nil? %>
+          <li><a href="<%= new_user_session_path %>">Ingresar <span class="glyphicon glyphicon-log-in" style="color:#0ce3ac"></span></a></li>
+          <li><a href="<%= new_user_registration_path %>">Registrarse <span class="glyphicon glyphicon-user" style="color:cornflowerblue"></span></a></li>
+      <% else %>
+          <li><a href="<%= destroy_user_session_path %>" data-method='delete' >Salir <span class="glyphicon glyphicon-off" style="color:#cc0000"></span></a></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<h2 align="center">Tienda</h2>
+<div class="container">
+  <div class="well">
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @tienda_comida.nombre %>
+</p>
+
+<p>
+  <strong>Foto:</strong>
+  <%= image_tag(@tienda_comida.foto, :class=>'img-rounded', :alt=>'Cinque Terre', :width=>'224', :height=>'236')   %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @tienda_comida.descripcion %>
+</p>
+
+<p>
+  <strong>Ubicacion:</strong>
+  <%= @tienda_comida.ubicacion %>
+</p>
+
+<%= link_to 'Editar', edit_tienda_comida_path(@tienda_comida), :class=>'btn btn-info btn-block' %>
+<%= link_to 'Regresar', tienda_comidas_path, :class=>'btn btn-info btn-block' %>
+  </div>
+</div>

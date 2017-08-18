@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+
+    <div class="well">
+      <h1>Editar Tienda </h1>
+
+<%= render 'form', tienda_comida: @tienda_comida %>
+
+<%= link_to 'Ver', @tienda_comida, :class=>'btn btn-info btn-block' %>
+<%= link_to 'Regresar', tienda_comidas_path, :class=>'btn btn-info btn-block' %>
+
+    </div>
+
+  </div>
+
+</div>

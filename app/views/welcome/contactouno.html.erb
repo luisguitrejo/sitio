@@ -1,0 +1,385 @@
+<meta name="viewport" content="width=device-width, initial-scale=1" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+
+<style type="text/css">
+  /* Set a size for our map container, the Google Map will take up 100% of this container */
+  #map {
+    width: 620px;
+    height: 420px;
+  }
+</style>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnC-d0W6Z0oVxxvgxYgEW86bXVhWuwnZU"></script>
+
+<script type="text/javascript">
+    // When the window has finished loading create our google map below
+    google.maps.event.addDomListener(window, 'load', init);
+
+
+    function init() {
+        // Basic options for a simple Google Map
+        // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+        var mapOptions = {
+            // How zoomed in you want the map to start at (always required)
+            zoom: 16,
+
+            // The latitude and longitude to center the map (always required)
+            center: new google.maps.LatLng(21.1571397,-100.9349218), // TIENDA DE NUESTRO CLIENTE
+
+            // How you would like to style the map.
+            // This is where you would paste any style found on Snazzy Maps.
+            styles: [
+                {
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#aee2e0"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#abce83"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#769E72"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#7B8758"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                        {
+                            "color": "#EBF4A4"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.park",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        },
+                        {
+                            "color": "#8dab68"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#5B5B3F"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                        {
+                            "color": "#ABCE83"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#A4C67D"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#9BBF72"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#EBF4A4"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#87ae79"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#7f2200"
+                        },
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                        {
+                            "color": "#ffffff"
+                        },
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "weight": 4.1
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#495421"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.neighborhood",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                }
+            ]};
+
+
+        // Get the HTML DOM element that will contain your map
+        // We are using a div with id="map" seen below in the <body>
+        var mapElement = document.getElementById('map');
+
+
+        // Create the Google Map using our element and options defined above
+        var map = new google.maps.Map(mapElement, mapOptions);
+
+
+        // Let's also add a marker while we're at it
+        var popup = new google.maps.InfoWindow
+        content: 'ejemplo'
+
+        var image = 'https://s26.postimg.org/6pf5vaheh/pizzaria.png'
+        var marker = new google.maps.Marker({
+
+            position: new google.maps.LatLng(21.1578584, -100.9361877),
+            map: map,
+            title: ' Pizza Plaza Yucatán #12 Teléfono:1822463',
+            icon: image
+
+
+
+        });
+
+
+
+
+
+
+        var image = 'https://s26.postimg.org/nfv4yd57d/restaurant.png'
+        var marker002 = new google.maps.Marker({
+
+            position: new google.maps.LatLng(21.1555559,-100.9310204),
+            map: map,
+            title: 'Nana Pancha Calle Guerrero #46 Teléfono:182 4382',
+            icon: image
+
+        })
+
+
+        var image = 'https://s26.postimg.org/nfv4yd57d/restaurant.png'
+        var marker003 = new google.maps.Marker({
+            position: new google.maps.LatLng(21.1581611,-100.934765 	),
+            map: map,
+            title: 'D Jardin Zacatecas #1 Teléfono:182 0252',
+            icon: image
+        })
+
+        var image = 'https://s26.postimg.org/nfv4yd57d/restaurant.png'
+        var marker004 = new google.maps.Marker({
+            position: new google.maps.LatLng(21.155405, -100.935131),
+            map: map,
+            title: 'Pollo Feliz Tabasco #29 Teléfono:1826347',
+            icon: image
+        })
+
+
+        var image = 'https://s26.postimg.org/6pf5vaheh/pizzaria.png'
+        var marker005 = new google.maps.Marker({
+            position: new google.maps.LatLng(21.156932, -100.934082 ),
+            map: map,
+            title: 'Taco Pizza Principal #10 Teléfono:182 0854',
+            icon: image
+        })
+
+
+        var image = 'https://s26.postimg.org/nfv4yd57d/restaurant.png'
+        var marker006 = new google.maps.Marker({
+            position: new google.maps.LatLng(21.157032, -100.935440	),
+            map: map,
+            title: 'Fruti Yogurt Hidalgo #2A Teléfono:182 8227',
+            icon: image
+        })
+
+
+        var marker007 = new google.maps.Marker({
+            position: new google.maps.LatLng(21.161646,-100.9349386),
+            map: map,
+            title: 'Tacos La Flamita Av. Norte #22 ',
+            icon: image
+        })
+
+        var image = 'https://s26.postimg.org/nfv4yd57d/restaurant.png'
+        var marker008 = new google.maps.Marker({
+            position: new google.maps.LatLng(21.162872, -100.938331	),
+            map: map,
+            title: 'Tortas La Unica Av.Norte #8 Teléfono:1822295',
+            icon: image
+        })
+
+        var image = 'https://s26.postimg.org/nfv4yd57d/restaurant.png'
+        var marker009 = new google.maps.Marker({
+            position: new google.maps.LatLng(21.159603, -100.929501	),
+            map: map,
+            title: 'Carnitas Vicente Marino Balleza #67 Teléfono:182-7017',
+            icon: image
+        })
+
+        var image = 'https://s26.postimg.org/nfv4yd57d/restaurant.png'
+        var marker010 = new google.maps.Marker({
+            position: new google.maps.LatLng(21.157620, -100.933225),
+            map: map,
+            title: 'Restaurant El Carruaje Guanajuato #7 Teléfono:418 181 0648',
+            icon: image
+        })
+
+        var image = 'https://s26.postimg.org/6pf5vaheh/pizzaria.png'
+        var marker011 = new google.maps.Marker({
+            position: new google.maps.LatLng(21.151548, -100.936874),
+            map: map,
+            title: 'Marchello Pizza Av.Sur #41 Teléfono:182 8000',
+            icon: image
+        })
+
+        var image = 'https://s26.postimg.org/5z07uqj6h/winebar.png'
+        var marker012 = new google.maps.Marker({
+            position: new google.maps.LatLng(21.157716, -100.918781),
+            map: map,
+            title: 'Mariscos el Siete Mares Av de los Héroes #57 Teléfono:182 2605',
+            icon: image
+        })
+
+
+        var marker013 = new google.maps.Marker({
+            position: new google.maps.LatLng(21.157874, -100.935149),
+            map: map,
+            title: 'Bar Mamá Dolores Principal #25 Teléfono:182 1778',
+            icon: image
+        })
+
+
+
+
+
+        var marker015 = new google.maps.Marker({
+                position: new google.maps.LatLng(21.157475, -100.935643	),
+                map: map,
+                title: 'El Pollo Sabroso Michoacán #10 Teléfono:182 0053',
+                icon: image
+            })
+
+        ;
+    }
+</script>
+<script async defer
+        src="http://www.facekala.com/images/com_hikashop/upload/thumbnails/150x150/shop-icon1.png">
+</script>
+
+<div  class="col-md-3"></div>
+<div  class="thumbnail" id="map", style ="width: 100%; height: 420px;"></div>
+<div class="thumbnail">Coloca el puntero sobre cada marcador para saber donde se encuentra
+ubicado cada uno de los sitios.</div>
+</br></br>
+<div  class="col-md-15" align="center">
+  <a href="<%= contacto_path %>"><input type="button" value="Regresar" class="btn btn-danger"/></a></div>
+</br></br>
+
+
+
+</body>

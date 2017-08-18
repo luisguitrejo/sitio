@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+<h1>Artesanias</h1>
+    <% @artesania.each do |artesanium| %>
+      <div class="col-md-3">
+        <div class="thumbnail">
+        <%= image_tag(artesanium.foto, :class => 'img-responsive')%>
+        <%= artesanium.descripcion %>
+        <%= artesanium.precio %>
+          <div class="buttons", style="margin-top:10px; margin-bottom:10px ">
+        <%= link_to 'Show', artesanium, :class => 'btn' %>
+        <%= link_to 'Edit', edit_artesanium_path(artesanium), :class => 'btn' %>
+            <% if user_signed_in? %>
+        <%= link_to 'Destroy', artesanium, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %>
+            <% end %>
+  </div>
+  </div>
+  </div>
+  <% end %>
+  <br>
+  <% if user_signed_in? %>
+<%= link_to 'Nueva Artesanía', new_artesanium_path %>
+  <% end %>
+</div>

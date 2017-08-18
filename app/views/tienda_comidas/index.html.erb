@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+<h3 align="center">Tiendas De Comidas</h3>
+    <% @tienda_comidas.each do |tienda_comida| %>
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <h2>
+        <%= tienda_comida.nombre %>
+          </h2>
+        <%= image_tag(tienda_comida.foto, :class=>'img-rounded', :alt=>'Cinque Terre', :width=>'224', :height=>'236')   %>
+          <div class="thumbnail">
+        <%= tienda_comida.descripcion %>
+          </div>
+          <div class="thumbnail">
+        <%= tienda_comida.ubicacion %>
+          </div>
+            <div class="buttons", style="margin-top:10px; margin-bottom:10px ">
+        <%= link_to 'Ver', tienda_comida, :class=>'btn btn-default btn-sm btn-block' %>
+
+              <% if user_signed_in? %>
+                  <%= link_to 'Editar', edit_tienda_comida_path(tienda_comida), :class=>'btn btn-default btn-sm btn-block' %>
+        <%= link_to 'Eliminar', tienda_comida, method: :delete, data: { confirm: 'Seguro?' }, :class=>'btn btn-default btn-sm btn-block' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+
+<br>
+
+  </div>
+<% if user_signed_in? %>
+    <%= link_to 'Nueva Tienda De Comida', new_tienda_comida_path, :class=>'btn btn-info btn-block' %>
+<% end %>

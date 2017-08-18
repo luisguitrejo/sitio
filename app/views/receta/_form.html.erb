@@ -1,0 +1,37 @@
+<%= form_with(model: recetum, local: true) do |form| %>
+  <% if recetum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recetum.errors.count, "error") %> prohibited this recetum from being saved:</h2>
+
+      <ul>
+      <% recetum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre, "Nombre" %>
+    <%= form.text_field :nombre, id: :recetum_nombre, :class =>'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :foto, "Imagen" %>
+    <%= form.text_field :foto, id: :recetum_foto, :class =>'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ingredientes, "Ingredientes" %>
+    <%= form.text_area :ingredientes, id: :recetum_ingredientes, :class =>'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :procedimiento, "Preparación" %>
+    <%= form.text_area :procedimiento, id: :recetum_procedimiento, :class =>'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

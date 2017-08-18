@@ -1,0 +1,273 @@
+<meta name="viewport" content="width=device-width, initial-scale=1" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+<body>
+
+
+
+<div id="first-slider">
+  <div id="carousel-example-generic" class="carousel slide carousel-fade">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <!-- Item 1 -->
+      <div class="item active slide1">
+        <div class="row"><div class="container">
+          <div class="col-md-3 text-right">
+            <img style="max-width: 200px;"  data-animation="animated zoomInLeft" src="http://s20.postimg.org/pfmmo6qj1/window_domain.png">
+          </div>
+          <div class="col-md-9 text-left">
+            <h3 data-animation="animated bounceInDown">Adquiere tus productos!</h3>
+            <h4 data-animation="anaimated bounceInUp">Es fácil desde cualquier dispositivo </h4>
+          </div>
+        </div></div>
+      </div>
+      <!-- Item 2 -->
+      <div class="item slide2">
+        <div class="row"><div class="container">
+          <div class="col-md-7 text-left">
+            <h3 data-animation="animated bounceInDown">Información segura</h3>
+            <h4 data-animation="animated bounceInUp">Cuidamos toda tu información </h4>
+          </div>
+          <div class="col-md-5 text-right">
+            <img style="max-width: 200px;"  data-animation="animated zoomInLeft" src="http://s20.postimg.org/sp11uneml/rack_server_unlock.png">
+          </div>
+        </div></div>
+      </div>
+      <!-- Item 3 -->
+      <div class="item slide3">
+        <div class="row"><div class="container">
+          <div class="col-md-7 text-left">
+            <h3 data-animation="animated bounceInDown">Cualquier parte del mundo</h3>
+            <h4 data-animation="animated bounceInUp">Compra desde la comodidad de tu hogar</h4>
+          </div>
+          <div class="col-md-5 text-right">
+            <img style="max-width: 200px;"  data-animation="animated zoomInLeft" src="http://s20.postimg.org/eq8xvxeq5/globe_network.png">
+          </div>
+        </div></div>
+      </div>
+      <!-- Item 4 -->
+      <div class="item slide4">
+        <div class="row"><div class="container">
+          <div class="col-md-7 text-left">
+            <h3 data-animation="animated bounceInDown">Servicio eficaz</h3>
+            <h4 data-animation="animated bounceInUp">Tus productos llegaran a gran velocidad</h4>
+          </div>
+          <div class="col-md-5 text-right">
+            <img style="max-width: 200px;"  data-animation="animated zoomInLeft" src="http://s20.postimg.org/9vf8xngel/internet_speed.png">
+          </div>
+        </div></div>
+      </div>
+      <!-- End Item 4 -->
+
+    </div>
+    <!-- End Wrapper for slides-->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <i class="fa fa-angle-left"></i><span class="sr-only">Atras</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <i class="fa fa-angle-right"></i><span class="sr-only">Siguiente</span>
+    </a>
+  </div>
+
+  </br></br>
+  <div  class="col-md-15" align="center">
+    <a href="<%= store_index_path %>"><input type="button" value="Artesanías" class="btn btn-danger"/></a></div>
+  </br></br>
+</div>
+
+<h1 align="center">Conoce los productos que tenemos para ti</h1>
+
+<script type="text/javascript">
+    (function( $ ) {
+
+        //Function to animate slider captions
+        function doAnimations( elems ) {
+            //Cache the animationend event in a variable
+            var animEndEv = 'webkitAnimationEnd animationend';
+
+            elems.each(function () {
+                var $this = $(this),
+                    $animationType = $this.data('animation');
+                $this.addClass($animationType).one(animEndEv, function () {
+                    $this.removeClass($animationType);
+                });
+            });
+        }
+
+        //Variables on page load
+        var $myCarousel = $('#carousel-example-generic'),
+            $firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
+
+        //Initialize carousel
+        $myCarousel.carousel();
+
+        //Animate captions in first slide on page load
+        doAnimations($firstAnimatingElems);
+
+        //Pause carousel
+        $myCarousel.carousel('pause');
+
+
+        //Other slides to be animated on carousel slide event
+        $myCarousel.on('slide.bs.carousel', function (e) {
+            var $animatingElems = $(e.relatedTarget).find("[data-animation ^= 'animated']");
+            doAnimations($animatingElems);
+        });
+        $('#carousel-example-generic').carousel({
+            interval:3000,
+            pause: "false"
+        });
+
+    })(jQuery);
+
+</script>
+
+<div class="container">
+  <div id="main_area">
+    <!-- Slider -->
+    <div class="row">
+      <div class="col-xs-12" id="slider">
+        <!-- Top part of the slider -->
+        <div class="row">
+          <div class="col-sm-8" id="carousel-bounding-box">
+            <div class="carousel slide" id="myCarousel">
+              <!-- Carousel items -->
+              <div class="carousel-inner">
+                <div class="active item" data-slide-number="0">
+                  <img src="https://s19.postimg.org/n8qunjwmr/image.jpg"></div>
+
+                <div class="item" data-slide-number="1">
+                  <img src="https://s19.postimg.org/bbz832upf/image.jpg"></div>
+
+                <div class="item" data-slide-number="2">
+                  <img src="https://s19.postimg.org/oeuumckxf/image.jpg"></div>
+
+                <div class="item" data-slide-number="3">
+                  <img src="https://s19.postimg.org/yavxlzqpf/image.jpg"></div>
+
+                <div class="item" data-slide-number="4">
+                  <img src="https://s19.postimg.org/d56q5559v/image.jpg"></div>
+
+                <div class="item" data-slide-number="5">
+                  <img src="https://s19.postimg.org/errccmrxv/image.jpg"></div>
+              </div><!-- Carousel nav -->
+              <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-sm-4" id="carousel-text"></div>
+
+          <div id="slide-content" style="display: none;">
+            <div id="slide-content-0">
+              <h2>Cupcake</h2>
+              <p>Código: GA-6211155 </p>
+              <p class="sub-text">$125 - <a href="/store/index">Ir a Comprar</a></p>
+            </div>
+
+            <div id="slide-content-1">
+              <h2>Alcancia</h2>
+              <p>Código: GA-6211153 </p>
+              <p class="sub-text">$160 - <a href="/store/index">Ir a Comprar</a></p>
+            </div>
+
+            <div id="slide-content-2">
+              <h2>Jarros</h2>
+              <p>Código: GA-6211153</p>
+              <p class="sub-text">$350 - <a href="/store/index">Ir a Comprar</a></p>
+            </div>
+
+            <div id="slide-content-3">
+              <h2>Alcancia Buho</h2>
+              <p>Código: GA-8458365 </p>
+              <p class="sub-text">$180 - <a href="/store/index">Ir a Comprar</a></p>
+            </div>
+
+            <div id="slide-content-4">
+              <h2>Jarra</h2>
+              <p>Código: GA-6211158</p>
+              <p class="sub-text">$300 - <a href="/store/index">Ir a Comprar</a></p>
+            </div>
+
+            <div id="slide-content-5">
+              <h2>Alajeros</h2>
+              <p>Código: GA-6211153</p>
+              <p class="sub-text">$180 - <a href="#">Read more</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/Slider-->
+
+    <div class="row hidden-xs" id="slider-thumbs">
+      <!-- Bottom switcher of slider -->
+      <ul class="hide-bullets">
+        <li class="col-sm-2">
+          <a class="thumbnail" id="carousel-selector-0"><img src="https://s19.postimg.org/qfpzkx6gj/image.jpg"></a>
+        </li>
+
+        <li class="col-sm-2">
+          <a class="thumbnail" id="carousel-selector-1"><img src="https://s19.postimg.org/9hqyz2x2r/image.jpg"></a>
+        </li>
+
+        <li class="col-sm-2">
+          <a class="thumbnail" id="carousel-selector-2"><img src="https://s19.postimg.org/j690fyh9v/image.jpg"></a>
+        </li>
+
+        <li class="col-sm-2">
+          <a class="thumbnail" id="carousel-selector-3"><img src="https://s19.postimg.org/pijkc1uyb/image.jpg"></a>
+        </li>
+
+        <li class="col-sm-2">
+          <a class="thumbnail" id="carousel-selector-4"><img src="https://s19.postimg.org/jqjg4wl4j/image.jpg"></a>
+        </li>
+
+        <li class="col-sm-2">
+          <a class="thumbnail" id="carousel-selector-5"><img src="https://s19.postimg.org/jgbxlk6ib/image.jpg"></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div  class="col-md-15" align="center">
+  <a href="<%= store_index_path %>"><input type="button" value="Ver Más" class="btn btn-danger"/></a></div>
+</br></br>
+</div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+
+        $('#myCarousel').carousel({
+            interval: 5000
+        });
+
+        $('#carousel-text').html($('#slide-content-0').html());
+
+        //Handles the carousel thumbnails
+        $('[id^=carousel-selector-]').click( function(){
+            var id = this.id.substr(this.id.lastIndexOf("-") + 1);
+            var id = parseInt(id);
+            $('#myCarousel').carousel(id);
+        });
+
+
+        // When the carousel slides, auto update the text
+        $('#myCarousel').on('slid.bs.carousel', function (e) {
+            var id = $('.item.active').data('slide-number');
+            $('#carousel-text').html($('#slide-content-'+id).html());
+        });
+    });
+</script>
+</body>

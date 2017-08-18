@@ -1,0 +1,43 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> Prohibido que esta orden se salve:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "Nombre" %>
+    <%= form.text_field :name, id: :order_name, size: 40, :class =>'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address, "Dirección" %>
+    <%= form.text_area :address, id: :order_address, rows: 3, cols: 40, :class =>'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email, "Correo" %>
+    <%= form.email_field :email, id: :order_email, size: 40, :class =>'form-control' %>
+  </div>
+
+    <div class="field">
+      <%= form.label :estado, "Estado de Orden" %>
+      <%= form.text_field :estado, id: :order_estado, size: 40, :class =>'form-control' %>
+    </div>
+
+  <div class="field">
+    <%= form.label :pay_type, "Tipo de pago" %>
+    <%= form.select :pay_type, Order.pay_types.keys, id: :order_pay_type,
+                    prompt: 'Seleciona un método de pago' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Realizar Orden', :class=>'btn btn-info btn-block' %>
+  </div>
+<% end %>

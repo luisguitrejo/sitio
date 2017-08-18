@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="well">
+<p>
+  <strong>Titulo:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Imagen:</strong>
+  <%= image_tag(@product.image_url, :class=>'img-rounded', :alt=>'Cinque Terre', :width=>'204', :height=>'236') %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @product.price %>
+</p>
+
+<%= link_to 'Editar', edit_product_path(@product), :class=>'btn btn-info btn-block' %>
+<%= link_to 'Regresar', products_path, :class=>'btn btn-info btn-block' %>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<%= form_with(model: tienda_comida, local: true) do |form| %>
+  <% if tienda_comida.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tienda_comida.errors.count, "error") %> prohibited this tienda_comida from being saved:</h2>
+
+      <ul>
+      <% tienda_comida.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre, "Nombre" %>
+    <%= form.text_field :nombre, id: :tienda_comida_nombre, :class =>'form-control' %>
+  </div>
+
+    <div class="field">
+      <%= form.label :foto, "Imagen" %>
+      <%= form.text_field :foto, id: :recetum_foto, :class =>'form-control' %>
+    </div>
+
+  <div class="field">
+    <%= form.label :descripcion, "Desripción" %>
+    <%= form.text_area :descripcion, id: :tienda_comida_descripcion, :class =>'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ubicacion, "Ubicación" %>
+    <%= form.text_area :ubicacion, id: :tienda_comida_ubicacion, :class =>'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

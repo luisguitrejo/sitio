@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+<h1>Recetas</h1>
+    <% @receta.each do |recetum| %>
+      <div class="col-md-3">
+        <div class="thumbnail">
+        <h2>
+        <%= recetum.nombre %>
+        </h2>
+        <%= image_tag(recetum.foto, :class=>'img-rounded', :alt=>'Cinque Terre', :width=>'224', :height=>'236') %>
+          <div class="thumbnail">
+        <%= recetum.ingredientes %>
+          </div>
+          <div class="thumbnail">
+                <%= recetum.procedimiento %>
+          </div>
+          <div class="buttons", style="margin-top:10px; margin-bottom:10px ">
+        <%= link_to 'Ver', recetum, :class=>'btn btn-default btn-sm btn-block' %>
+
+            <% if user_signed_in? %>
+                <%= link_to 'Editar', edit_recetum_path(recetum), :class=>'btn btn-default btn-sm btn-block' %>
+        <%= link_to 'Eliminar', recetum, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-default btn-sm btn-block' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+<br>
+
+</div>
+<% if user_signed_in? %>
+    <%= link_to 'Nueva receta', new_recetum_path, :class=>'btn btn-info btn-block' %>
+<% end %>

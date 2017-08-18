@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+
+<h1 align="center">Artesanías</h1>
+
+<div class="table-responsive">
+  <% @products.each do |product| %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <dt><%= product.title %></dt>
+        <td> <br>
+          <%= image_tag(product.image_url, :class=>'img-rounded', :alt=>'Cinque Terre', :width=>'224', :height=>'236') %>
+        </td>
+        <br>
+        <td>
+        <td class="list_description">
+        <dl>
+
+          <dd><%= truncate(strip_tags(product.description),
+                           length: 80) %></dd>
+        </dl>
+      </td>
+        <br>
+        <td class="list_description">
+          <dl>
+            <dt><%= product.price %></dt>
+          </dl>
+        </td>
+        <br>
+        </td>
+        <td class="list_actions">
+          <%= link_to 'Mostrar', product, :class=>'btn btn-default btn-sm btn-block' %><br/>
+          <% if user_signed_in? %>
+          <%= link_to 'Editar', edit_product_path(product), :class=>'btn btn-default btn-sm btn-block'  %><br/>
+          <%= link_to 'Eliminar', product, method: :delete,
+                      data: { confirm: '¿Estas seguro de borrar?' }, :class=>'btn btn-default btn-sm btn-block'  %>
+
+          <% end %>
+        </td>
+        </td>
+      </tr>
+  <% end %>
+</div>
+
+<br>
+<% if user_signed_in? %>
+    <%= link_to 'Agregar Nuevo Producto', new_product_path, :class=>'btn btn-info btn-block' %>
+<% end %>
+      </div>
+
+
+
+</div>
+</body>
+</html>

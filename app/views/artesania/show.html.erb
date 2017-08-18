@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Foto:</strong>
+  <%= image_tag(@artesanium.foto, :style =>'width:200px') %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @artesanium.descripcion %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @artesanium.precio %>
+</p>
+
+<%= link_to 'Edit', edit_artesanium_path(@artesanium) %> |
+<%= link_to 'Back', artesania_path %>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+<h2 align="center">Tu receta</h2>
+<div class="container">
+  <div class="well">
+
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @recetum.nombre %>
+</p>
+
+<p>
+  <strong>Foto:</strong>
+  <%= image_tag(@recetum.foto, :class=>'img-rounded', :alt=>'Cinque Terre', :width=>'224', :height=>'236')  %>
+</p>
+
+<p>
+  <strong>Ingredientes:</strong>
+  <%= @recetum.ingredientes %>
+</p>
+
+<p>
+  <strong>Procedimiento:</strong>
+  <%= @recetum.procedimiento %>
+</p>
+
+<%= link_to 'Editar', edit_recetum_path(@recetum), :class=>'btn btn-info btn-block' %>
+<%= link_to 'Regresar', receta_path, :class=>'btn btn-info btn-block' %>
+  </div>
+</div>
